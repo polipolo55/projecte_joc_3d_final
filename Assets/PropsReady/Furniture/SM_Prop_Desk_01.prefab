@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171319019943659131}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8741999, y: 0.00000011920929, z: -3.1001406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -151,4 +151,5 @@ MonoBehaviour:
   Strength: 100
   Mass: 20
   Value: 150
-  BrokenVersion: {fileID: 0}
+  BrokenVersion: {fileID: 6796290045676065605, guid: e1ef7ec6094e31e4e8e2d1f2955082b8,
+    type: 3}
