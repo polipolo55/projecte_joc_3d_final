@@ -4,20 +4,37 @@ using UnityEngine;
 
 [RequireComponent(typeof(IMovementBehaviour))]
 [RequireComponent(typeof(InputManager))]
+[RequireComponent(typeof(PickupBehaviour))]
 
 public class PlayerController : MonoBehaviour
 {
     IMovementBehaviour _mb;
+    PickupBehaviour _pb;
+    PunchBehaviour _punchB;
     InputManager _input;
 
     private void Awake()
     {
+        _pb = GetComponent<PickupBehaviour>();
+        _punchB = GetComponent<PunchBehaviour>();
         _input = GetComponent<InputManager>();
         _mb = GetComponent<IMovementBehaviour>();
     }
     public void OnJump()
     {
         _mb.Jump();
+    }
+    public void OnGrab()
+    {
+        _pb.Grab(false);
+    }
+    public void OnClickGrab()
+    {
+        if (_pb.HoldingObject()) _pb.Grab(true);
+        else
+        {
+            _punchB.Punch();
+        }
     }
 
     private void FixedUpdate()
@@ -26,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             _mb.Rotate(_input.rotation);
         }
-        if(_input.movement != Vector2.zero)
+        if (_input.movement != Vector2.zero)
         {
             var dir = transform.forward * _input.movement.y + transform.right * _input.movement.x;
             _mb.Move(dir);

@@ -8,10 +8,7 @@ using UnityEngine.UIElements;
 public class InputManager : MonoBehaviour
 {
     public Vector2 rotation, movement;
-    public bool jump;
-    public bool attack;
-    public bool pickup;
-    public UnityEvent jumped;
+    public UnityEvent jumped, objectPickup, attack;
 
     public void OnRotate(InputAction.CallbackContext ctx)
     {
@@ -23,18 +20,14 @@ public class InputManager : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started) jump = true;
-        jumped.Invoke();
+        if (ctx.started) jumped.Invoke();
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        
-        if(ctx.performed) attack = true;
-        else attack = false;
+        if (ctx.started) attack.Invoke();
     }
     public void OnPickup(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed) pickup = true;
-        else pickup = false;
+        if (ctx.started) objectPickup.Invoke();
     }
 }

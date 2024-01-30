@@ -11,7 +11,7 @@ public class RBMovementBehaviour : MonoBehaviour, IMovementBehaviour
 {
     public Rigidbody _rb;
     public Transform _camerarotation;
-    public LayerMask _ground;
+    public LayerMask ground;
 
     [Header("Movement")]
     public float _speed = 5f;
@@ -38,15 +38,15 @@ public class RBMovementBehaviour : MonoBehaviour, IMovementBehaviour
     }
     public void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f);
-        if(grounded) _rb.drag = _groundDrag;
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+        if (grounded) _rb.drag = _groundDrag;
         else _rb.drag = 0;
         SpeedCap();
     }
 
     public void Rotate(Vector2 rotation)
     {
-        _rb.rotation = Quaternion.Euler(0, _camerarotation.eulerAngles.y,0);
+        _rb.rotation = Quaternion.Euler(0, _camerarotation.eulerAngles.y, 0);
     }
 
     public void Move()
@@ -68,7 +68,7 @@ public class RBMovementBehaviour : MonoBehaviour, IMovementBehaviour
     }
     public void Jump()
     {
-        if(grounded && canJump)
+        if (grounded && canJump)
         {
             canJump = false;
             _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
@@ -90,7 +90,7 @@ public class RBMovementBehaviour : MonoBehaviour, IMovementBehaviour
     public void SpeedCap()
     {
         Vector3 totalVelocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-        if(totalVelocity.magnitude > _speed)
+        if (totalVelocity.magnitude > _speed)
         {
             Vector3 limitedVelocity = totalVelocity.normalized * _speed;
             _rb.velocity = new Vector3(limitedVelocity.x, _rb.velocity.y, limitedVelocity.z);

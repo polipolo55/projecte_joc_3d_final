@@ -1,45 +1,57 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PickupBehaviour : MonoBehaviour
 {
-    public float _pickupRange = 2f;
-    public bool _isPickup = false;
-    public bool _pickedUp = false;
-
     public Transform headPos;
+    public Transform pickupPoint;
     public RawImage crosshair;
+
+    [Header("Params")]
+    public float PushForce = 5f;
+    public float pickupRange = 5f;
+
+    private bool _isPickup = false; //Retorna si es pot agafar un objecte
+    private bool _pickedUp = false; //Retorna si s'ha agafat un objecte
+    [SerializeField]
+    private ObjectGrabbable objectGrabbable = null;
+
     private void Update()
     {
-        if(_isPickup) crosshair.color = Color.red;
-        else crosshair.color = Color.white;
-        if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, _pickupRange)) 
+        if (!_pickedUp)
         {
-            if(hitInfo.transform.TryGetComponent(out ObjectGrabbable objectGrabbable))
+            if (_isPickup) crosshair.color = Color.red;
+            else crosshair.color = Color.white;
+
+            if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, pickupRange))
             {
-                _isPickup = true;
+                if (hitInfo.transform.TryGetComponent(out objectGrabbable)) _isPickup = true;
+                else _isPickup = false;
             }
             else _isPickup = false;
-        } 
-        else _isPickup=false;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(headPos.transform.position, headPos.transform.forward * _pickupRange);
-    }
-
-    public void Grab()
-    {
-
-    }
-    private void FixedUpdate()
-    {
-        if(_pickedUp) 
+        }
+        else if (objectGrabbable == null) 
         {
-            
+            _pickedUp = false;
         }
     }
+
+    public void Grab(bool push)
+    {
+        if (_isPickup && objectGrabbable != null)
+        {
+            _pickedUp = !_pickedUp;
+            if (_pickedUp) objectGrabbable.Grab(pickupPoint);
+            else
+            {
+                objectGrabbable.Drop();
+                if (push) objectGrabbable.Push(headPos, PushForce);
+            }
+        }
+    }
+    public bool HoldingObject() { return _pickedUp; }
 }
