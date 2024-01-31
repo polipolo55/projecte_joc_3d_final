@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2424,6 +2424,7 @@ GameObject:
   - component: {fileID: 849768445}
   - component: {fileID: 849768446}
   - component: {fileID: 849768448}
+  - component: {fileID: 849768449}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2462,9 +2463,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
   _camerarotation: {fileID: 330585546}
-  _ground:
+  ground:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   _speed: 7
   _groundDrag: 5
   _jumpForce: 4
@@ -2697,6 +2698,21 @@ MonoBehaviour:
   PushForce: 80
   pickupRange: 5
   objectGrabbable: {fileID: 0}
+--- !u!114 &849768449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849768441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8b7468c087ab34a9f87eb7826faa0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headPos: {fileID: 330585546}
+  punchForce: 10
+  punchRange: 5
 --- !u!1 &899713981
 GameObject:
   m_ObjectHideFlags: 0
