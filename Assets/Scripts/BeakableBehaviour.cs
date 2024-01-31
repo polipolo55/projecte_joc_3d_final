@@ -12,6 +12,8 @@ public class BeakableBehaviour : MonoBehaviour
     public float Health = 1f;
     public float Mass = 10f;
     public int Value = 0;
+    public bool WillDissapear = false;
+    public GameObject ParticleSystem;
     private Collider _coll;
     private Rigidbody _rb;
     public GameObject BrokenVersion;
@@ -46,6 +48,11 @@ public class BeakableBehaviour : MonoBehaviour
             Destroy(gameObject);
         } else if (_rb != null && _rb.isKinematic == true) { 
             _rb.isKinematic = false;
+        } else if (WillDissapear == true) {
+            var ps = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
+            ps.GetComponent<ParticleSystem>().Play();
+            ps.transform.SetParent(transform);
+            Destroy(gameObject, 0.5f);
         }
     }
 }
