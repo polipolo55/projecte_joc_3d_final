@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,14 @@ public class BeakableBehaviour : MonoBehaviour
     public int Value = 0;
     private Collider _coll;
     private Rigidbody _rb;
-    public GameObject BrokenVersion; 
+    public GameObject BrokenVersion;
+    public static event Action<BeakableBehaviour> OnObjectBroken = delegate { };
 
     private void Awake()
     {
         _coll = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
-        _rb.mass = Mass;
-        
+        _rb.mass = Mass;      
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,6 +33,7 @@ public class BeakableBehaviour : MonoBehaviour
     {
         if (Broken) return;
         Broken = true;
+        OnObjectBroken.Invoke(this);
         if (BrokenVersion != null)
         {
             Instantiate(BrokenVersion, transform.position, transform.rotation);
