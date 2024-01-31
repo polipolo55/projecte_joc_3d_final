@@ -218,6 +218,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Broken: 0
   Strength: 50
+  Health: 1
   Mass: 8
+  isKinematic: 0
   Value: 100
+  WillDissapear: 0
+  ParticleSystem: {fileID: 0}
+  DissapearTime: 0.5
   BrokenVersion: {fileID: 0}

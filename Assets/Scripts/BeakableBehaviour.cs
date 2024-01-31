@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -11,11 +12,14 @@ public class BeakableBehaviour : MonoBehaviour
     public float Strength = 1f;
     public float Health = 1f;
     public float Mass = 10f;
+    public bool isKinematic = false;
     public int Value = 0;
     public bool WillDissapear = false;
     public GameObject ParticleSystem;
+    public float DissapearTime = 0.5f;
     private Collider _coll;
     private Rigidbody _rb;
+    private ObjectGrabbable _grab;
     public GameObject BrokenVersion;
     public static event Action<BeakableBehaviour> OnObjectBroken = delegate { };
 
@@ -23,7 +27,9 @@ public class BeakableBehaviour : MonoBehaviour
     {
         _coll = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
+        _grab = GetComponent<ObjectGrabbable>();
         _rb.mass = Mass;      
+        _rb.isKinematic = isKinematic;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,11 +46,28 @@ public class BeakableBehaviour : MonoBehaviour
     private void Break()
     {
         if (Broken) return;
+        if (_grab != null)
+        {
+            _grab.Drop();
+            Destroy(_grab);
+        }
         Broken = true;
         OnObjectBroken.Invoke(this);
         if (BrokenVersion != null)
         {
-            Instantiate(BrokenVersion, transform.position, transform.rotation);
+            GameObject brokenObject = Instantiate(BrokenVersion, transform.position, transform.rotation);
+
+            Rigidbody[] brokenRbs = brokenObject.GetComponentsInChildren<Rigidbody>();
+
+            var nRigid = brokenRbs.Length;
+
+            foreach (Rigidbody rb in brokenRbs)
+            {
+                rb.velocity = _rb.velocity;
+                rb.angularVelocity = _rb.angularVelocity;
+                rb.mass = Mass / nRigid;
+            }
+
             Destroy(gameObject);
         } else if (_rb != null && _rb.isKinematic == true) { 
             _rb.isKinematic = false;
@@ -52,7 +75,7 @@ public class BeakableBehaviour : MonoBehaviour
             var ps = Instantiate(ParticleSystem, transform.position, Quaternion.identity);
             ps.GetComponent<ParticleSystem>().Play();
             ps.transform.SetParent(transform);
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, DissapearTime);  
         }
     }
 }

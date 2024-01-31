@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185160609331327236}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.000000104308114}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: -0.0000001872535}
   m_LocalPosition: {x: 17.43, y: 1.864, z: 7.351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -58,8 +58,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Broken: 0
   Strength: 20
+  Health: 50
   Mass: 4
+  isKinematic: 1
   Value: 800
+  WillDissapear: 0
+  ParticleSystem: {fileID: 0}
+  DissapearTime: 0.5
   BrokenVersion: {fileID: 0}
 --- !u!23 &8149829314861098166
 MeshRenderer:
@@ -149,7 +154,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
