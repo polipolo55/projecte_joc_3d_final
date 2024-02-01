@@ -101,4 +101,14 @@ public class RBMovementBehaviour : MonoBehaviour, IMovementBehaviour
     {
         canJump = true;
     }
+
+    public void MoveToPoint(Vector3 target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void MoveToPoint(Vector3 target, float speed)
+    {
+        throw new System.NotImplementedException();
+    }
 }

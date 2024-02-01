@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         _punchB = GetComponent<PunchBehaviour>();
         _input = GetComponent<InputManager>();
         _mb = GetComponent<IMovementBehaviour>();
+        GameManager.instance.Player = gameObject;
     }
     public void OnJump()
     {
