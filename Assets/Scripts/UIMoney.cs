@@ -8,7 +8,7 @@ public class UIMoney : MonoBehaviour
     public TMP_Text moneyText;
 
     [Header("Params")]
-    public float updateSpeed = 20f;
+    public float updateSpeed = 1000f;
 
     private int _currentMoney = 0;
     private int _targetMoney = 0;

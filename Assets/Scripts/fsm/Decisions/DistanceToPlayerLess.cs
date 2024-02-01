@@ -12,7 +12,6 @@ namespace FSM
         public override bool Decide(StateController controller)
         {
             var dist = Vector3.Distance(controller.transform.position, GameManager.instance.Player.transform.position);
-            Debug.Log(dist);
             return dist < distance;
         }
     }
