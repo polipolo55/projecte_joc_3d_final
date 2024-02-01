@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 64411854881453494}
   - component: {fileID: 2846403000419927203}
   - component: {fileID: 3963857897557529958}
+  - component: {fileID: 3375376737084335105}
+  - component: {fileID: 7037492804459759265}
   m_Layer: 0
   m_Name: SM_Prop_Computer_Monitor_01
   m_TagString: Untagged
@@ -158,3 +160,28 @@ MonoBehaviour:
   ParticleSystem: {fileID: 0}
   DissapearTime: 0.5
   BrokenVersion: {fileID: 0}
+--- !u!114 &3375376737084335105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911445299336768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ffcdb312842b47a1563b347fb9d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7037492804459759265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911445299336768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc8316e61dc014da13bf0918a721a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: 0

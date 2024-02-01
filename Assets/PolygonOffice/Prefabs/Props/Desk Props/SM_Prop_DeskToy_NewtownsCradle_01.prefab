@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 64226010180280848}
   - component: {fileID: 2618355172486177464}
   - component: {fileID: 1631363778865157925}
+  - component: {fileID: 4257975883038014049}
+  - component: {fileID: 1465801742022202858}
   m_Layer: 0
   m_Name: SM_Prop_DeskToy_NewtownsCradle_01
   m_TagString: Untagged
@@ -245,6 +247,31 @@ MonoBehaviour:
   ParticleSystem: {fileID: 0}
   DissapearTime: 0.5
   BrokenVersion: {fileID: 0}
+--- !u!114 &4257975883038014049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228570482047808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc8316e61dc014da13bf0918a721a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: 0
+--- !u!114 &1465801742022202858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228570482047808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ffcdb312842b47a1563b347fb9d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1344424296662312
 GameObject:
   m_ObjectHideFlags: 0
