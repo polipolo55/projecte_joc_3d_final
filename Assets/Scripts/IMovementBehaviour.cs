@@ -8,6 +8,8 @@ public interface IMovementBehaviour
     public void Move();
     public void Move(Vector3 dir);
     public void Move(Vector3 dir, float speed);
+    public void MoveToPoint(Vector3 target);
+    public void MoveToPoint(Vector3 target, float speed);
     public void SetDir(Vector3 dir);
     public void SetSpeed(float speed);
     public void Jump();
