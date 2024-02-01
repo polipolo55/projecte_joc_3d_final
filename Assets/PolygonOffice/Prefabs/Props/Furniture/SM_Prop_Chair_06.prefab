@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Broken: 0
   Strength: 50
-  Health: 1
+  Health: 100
   Mass: 8
   isKinematic: 0
   Value: 100

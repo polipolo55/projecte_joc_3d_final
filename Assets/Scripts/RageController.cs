@@ -13,14 +13,18 @@ public class RageController : MonoBehaviour
     public float decreaseRate = 5f;
     public float moneyRageRatio = 0.5f;
 
-    private float gaugeAngle = -76f;
-    private float gaugeStep = 2f;
+    private float gaugeAngle =- 76f;
+    private float gaugeStep = 2.6f;
+
+    [SerializeField]
+    private float _tmp;
 
 
     private float GaugeAngle() // Funció per calcular la rotació segons el rage
     {
         float rageInverse = 100f - rageValue;
-        return rageInverse*gaugeStep - 76f;
+        _tmp = rageInverse * gaugeStep + gaugeAngle;
+        return rageInverse*gaugeStep + gaugeAngle;
     }
     private void Start()
     {
