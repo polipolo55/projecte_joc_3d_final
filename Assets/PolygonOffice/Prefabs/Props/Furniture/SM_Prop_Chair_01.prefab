@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 64361175903896872}
   - component: {fileID: 7331108114596441908}
   - component: {fileID: 3352439627335965299}
+  - component: {fileID: 1885338897765836271}
+  - component: {fileID: 5761956749083506735}
   m_Layer: 0
   m_Name: SM_Prop_Chair_01
   m_TagString: Untagged
@@ -204,3 +206,28 @@ MonoBehaviour:
   DissapearTime: 0.5
   BrokenVersion: {fileID: 1229937119878583680, guid: b1fe223de52d5cc408392eb4bc20a514,
     type: 3}
+--- !u!114 &1885338897765836271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743707620356134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc8316e61dc014da13bf0918a721a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: 0
+--- !u!114 &5761956749083506735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743707620356134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ffcdb312842b47a1563b347fb9d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
