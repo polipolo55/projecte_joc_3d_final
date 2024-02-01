@@ -22,7 +22,7 @@ public class MoneyController : MonoBehaviour
     {
         moneyAmount += bb.Value;
         brokenObjects.Add(bb.gameObject);
-        if(_moneyUI != null)
+        if (_moneyUI != null)
         {
             _moneyUI.SetTargetMoney(moneyAmount);
         }
