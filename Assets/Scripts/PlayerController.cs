@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnClickGrab()
     {
-        if (_pb.HoldingObject()) _pb.Grab(true);
+        if (_pb.HoldingObject() && !_pb.IsSpecial()) _pb.Grab(true);
         else
         {
             _punchB.Punch();

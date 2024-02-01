@@ -9,7 +9,9 @@ public class PickupBehaviour : MonoBehaviour
 {
     public Transform headPos;
     public Transform pickupPoint;
+    public Transform handPos;
     public RawImage crosshair;
+    
 
     [Header("Params")]
     public float PushForce = 5f;
@@ -29,7 +31,10 @@ public class PickupBehaviour : MonoBehaviour
 
             if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, pickupRange))
             {
-                if (hitInfo.transform.TryGetComponent(out objectGrabbable)) _isPickup = true;
+                if (hitInfo.transform.TryGetComponent(out objectGrabbable)) 
+                {
+                    _isPickup = true;
+                }
                 else _isPickup = false;
             }
             else _isPickup = false;
@@ -44,14 +49,39 @@ public class PickupBehaviour : MonoBehaviour
     {
         if (_isPickup && objectGrabbable != null)
         {
-            _pickedUp = !_pickedUp;
-            if (_pickedUp) objectGrabbable.Grab(pickupPoint);
+            if (!_pickedUp) 
+            {
+                if(objectGrabbable.special)
+                {
+                    objectGrabbable.GrabSpecial(handPos);
+                }
+                else objectGrabbable.Grab(pickupPoint);
+                _pickedUp = true;
+            } 
             else
             {
-                objectGrabbable.Drop();
-                if (push) objectGrabbable.Push(headPos, PushForce);
+                if(!objectGrabbable.special)
+                {
+                    objectGrabbable.Drop();
+                    if (push) objectGrabbable.Push(headPos, PushForce);
+                    _pickedUp = false;
+                }
+                else
+                {
+                    if (!push) 
+                    {
+                        objectGrabbable.Drop();
+                        _pickedUp = false;
+                    }
+                    
+                }
             }
         }
+    }
+    public bool IsSpecial() 
+    {
+        if (objectGrabbable == null) return false;
+        return objectGrabbable.special;
     }
     public bool HoldingObject() { return _pickedUp; }
 }
