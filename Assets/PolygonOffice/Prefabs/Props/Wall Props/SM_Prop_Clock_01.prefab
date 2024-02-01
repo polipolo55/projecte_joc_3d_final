@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 33558363888601074}
   - component: {fileID: 23952469270201118}
   - component: {fileID: 64140633883968974}
-  - component: {fileID: 3965104109486238672}
   - component: {fileID: 8516875273390965925}
   - component: {fileID: 7615298971904280260}
   m_Layer: 0
@@ -277,28 +276,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43305215248143578, guid: 11167c2f4aa840945bacf7a8894f2b5f, type: 2}
---- !u!114 &3965104109486238672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800966491894966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 068eedbde93a8a949b32d6611da0383b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Broken: 0
-  Strength: 1
-  Health: 1
-  Mass: 10
-  isKinematic: 1
-  Value: 0
-  WillDissapear: 0
-  ParticleSystem: {fileID: 0}
-  DissapearTime: 0.5
-  BrokenVersion: {fileID: 0}
 --- !u!114 &8516875273390965925
 MonoBehaviour:
   m_ObjectHideFlags: 0

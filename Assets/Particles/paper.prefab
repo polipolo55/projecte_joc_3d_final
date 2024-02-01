@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9018439900698582036}
   - component: {fileID: 8808854337987602287}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -987,7 +987,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.68253917
+          value: 0.4603178
           inSlope: -0.058906794
           outSlope: -0.058906794
           tangentMode: 0
@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0224f8efcb7cf2842b4edabab5ccc4b6, type: 2}
+  - {fileID: 2100000, guid: 648863f736b0ee34f942a2e9bae738a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

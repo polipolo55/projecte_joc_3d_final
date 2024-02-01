@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 64515190041044580}
   - component: {fileID: 5028020285620176716}
   - component: {fileID: 4529618426811215566}
+  - component: {fileID: 1468131914767598485}
+  - component: {fileID: 925074411855094628}
+  - component: {fileID: 6271808602856582766}
   m_Layer: 0
   m_Name: SM_Prop_Book_Magazine_02
   m_TagString: Untagged
@@ -148,10 +151,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Broken: 0
-  Strength: 30
-  Health: 600
-  Mass: 0.2
+  Strength: 3
+  Health: 5
+  Mass: 0.4
+  isKinematic: 0
   Value: 5
+  WillDissapear: 1
+  ParticleSystem: {fileID: 71755660731124436, guid: 109c76972ce10214a8e45be2d802d742,
+    type: 3}
+  DissapearTime: 0.5
+  BrokenVersion: {fileID: 0}
+--- !u!114 &1468131914767598485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766229464219394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068eedbde93a8a949b32d6611da0383b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Broken: 0
+  Strength: 1
+  Health: 1
+  Mass: 10
+  isKinematic: 0
+  Value: 0
   WillDissapear: 0
   ParticleSystem: {fileID: 0}
+  DissapearTime: 0.5
   BrokenVersion: {fileID: 0}
+--- !u!114 &925074411855094628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766229464219394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc8316e61dc014da13bf0918a721a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: 0
+--- !u!114 &6271808602856582766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766229464219394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ffcdb312842b47a1563b347fb9d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
