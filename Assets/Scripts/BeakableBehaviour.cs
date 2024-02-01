@@ -43,6 +43,11 @@ public class BeakableBehaviour : MonoBehaviour
         }
     }
 
+    public void SubtractHealth(float amount)
+    {
+        Health -= amount;
+    }
+
     private void Break()
     {
         if (Broken) return;

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     PunchBehaviour _punchB;
     InputManager _input;
 
+    public Animator animator;
+
     private void Awake()
     {
         _pb = GetComponent<PickupBehaviour>();
@@ -35,6 +37,11 @@ public class PlayerController : MonoBehaviour
         {
             _punchB.Punch();
         }
+    }
+
+    private void Update()
+    {
+        animator.SetBool("Punching", _input.attacking);
     }
 
     private void FixedUpdate()

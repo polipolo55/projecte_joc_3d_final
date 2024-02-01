@@ -9,6 +9,7 @@ public class PunchBehaviour : MonoBehaviour
 
     public float punchForce = 10f;
     public float punchRange = 5f;
+    public float punchDamage = 10f;
     public void Punch()
     {
         if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, punchRange))
@@ -16,6 +17,8 @@ public class PunchBehaviour : MonoBehaviour
             if (hitInfo.transform.TryGetComponent(out ObjectPunchable punchableComponent))
             {
                 punchableComponent.Punch(headPos, punchForce);
+                BeakableBehaviour bb = punchableComponent.GetComponentInParent<BeakableBehaviour>();
+                bb.SubtractHealth(punchDamage);
             }
         }
     }
