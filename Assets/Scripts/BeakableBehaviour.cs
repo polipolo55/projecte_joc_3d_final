@@ -6,21 +6,38 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent (typeof(Collider))]
+[RequireComponent(typeof(AudioSource))]
 public class BeakableBehaviour : MonoBehaviour
 {
+    [Header("Object Properties")]
     public bool Broken = false;
     public float Strength = 1f;
     public float Health = 1f;
+
+    [Space]
+    [Header("Physics Properties")]
     public float Mass = 10f;
     public bool isKinematic = false;
+
+    [Space]
+    [Header("Gameplay Properties")]
+    [Min(0)]
     public int Value = 0;
+
+
+    [Space]
     public bool WillDissapear = false;
     public GameObject ParticleSystem;
+
+    [Range(0.05f, 1f)]
     public float DissapearTime = 0.5f;
+
     private Collider _coll;
     private Rigidbody _rb;
     private ObjectGrabbable _grab;
     public GameObject BrokenVersion;
+    public AudioClip BreakSound;
+    private AudioSource _audioSource;
     public static event Action<BeakableBehaviour> OnObjectBroken = delegate { };
 
     private void Awake()
@@ -28,6 +45,8 @@ public class BeakableBehaviour : MonoBehaviour
         _coll = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
         _grab = GetComponent<ObjectGrabbable>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.dopplerLevel = 4f;
         _rb.mass = Mass;      
         _rb.isKinematic = isKinematic;
     }
@@ -57,6 +76,7 @@ public class BeakableBehaviour : MonoBehaviour
             Destroy(_grab);
         }
         Broken = true;
+        _audioSource.PlayOneShot(BreakSound);
         OnObjectBroken.Invoke(this);
         if (BrokenVersion != null)
         {
@@ -71,6 +91,7 @@ public class BeakableBehaviour : MonoBehaviour
                 rb.velocity = _rb.velocity;
                 rb.angularVelocity = _rb.angularVelocity;
                 rb.mass = Mass / nRigid;
+                GameManager.instance.PoolingManager.AddPiece(rb.gameObject);
             }
 
             Destroy(gameObject);

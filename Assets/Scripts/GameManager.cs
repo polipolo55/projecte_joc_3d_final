@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject Player;
+    public PoolingManager PoolingManager;
 
     private void Awake()
     {
