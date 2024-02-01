@@ -14,10 +14,11 @@ public class UIMoney : MonoBehaviour
     private int _targetMoney = 0;
     private float _updateDelay = 0;
     private bool _coroutineActive = false;
+    private float _fontSize;
 
     void Start()
     {
-        // You can start the coroutine to update the money incrementally
+        _fontSize = moneyText.fontSize;
         _updateDelay = 1f / updateSpeed;
     }
 
@@ -26,9 +27,10 @@ public class UIMoney : MonoBehaviour
         _coroutineActive = true;
         while (_currentMoney < _targetMoney)
         {
-                _currentMoney++;
-                moneyText.text = "MONEY: $" + _currentMoney.ToString();
-                yield return new WaitForSeconds(_updateDelay);
+            _currentMoney++;
+            moneyText.text = "MONEY: $" + _currentMoney.ToString();
+            if(_currentMoney%2  == 0) moneyText.fontSize = _fontSize + 6f;
+            yield return new WaitForSeconds(_updateDelay);
         }
         _coroutineActive = false;
     }
@@ -38,6 +40,15 @@ public class UIMoney : MonoBehaviour
     {
         _targetMoney = amount;
         if (!_coroutineActive) StartCoroutine(UpdateMoney());
+    }
+
+    private void Update()
+    {
+        if(moneyText.fontSize > _fontSize)
+        {
+            moneyText.fontSize -= Time.deltaTime * 50f;
+        }
+        if (moneyText.fontSize < _fontSize) moneyText.fontSize = _fontSize;
     }
 
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class PunchBehaviour : MonoBehaviour
 {
     public Transform headPos;
-    public LayerMask itemMask;
 
     public ObjectPunchable punchable;
 
@@ -14,17 +13,41 @@ public class PunchBehaviour : MonoBehaviour
     public float punchRange = 5f;
     public float punchDamage = 10f;
 
+    private float realDamage;
+    private float realForce;
+
+    private void Awake()
+    {
+        ResetValues();
+    }
+
+    private void ResetValues()
+    {
+        realDamage = punchDamage;
+        realForce = punchForce;
+    }
+
     public void Punch()
     {
-        if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, punchRange, itemMask))
+        if (Physics.Raycast(headPos.transform.position, headPos.transform.forward, out RaycastHit hitInfo, punchRange))
         {
             if (hitInfo.transform.TryGetComponent(out ObjectPunchable punchableComponent))
             {
                 punchable = punchableComponent;
-                punchableComponent.Punch(headPos, punchForce);
+                punchableComponent.Punch(headPos, realForce);
                 BeakableBehaviour bb = punchableComponent.GetComponentInParent<BeakableBehaviour>();
-                bb.SubtractHealth(punchDamage);
+                if (bb != null) bb.SubtractHealth(realDamage);
             }
         }
     }
+
+    public void Punch(float extraForce, float extraDamage)
+    {
+        realDamage = punchDamage + extraDamage;
+        realForce = punchForce + extraForce;
+        Punch();
+        ResetValues();
+    }
+
+    
 }

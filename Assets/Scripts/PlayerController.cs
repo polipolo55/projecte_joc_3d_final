@@ -36,13 +36,15 @@ public class PlayerController : MonoBehaviour
         if (_pb.HoldingObject() && !_pb.IsSpecial()) _pb.Grab(true);
         else
         {
-            _punchB.Punch();
+            if (_pb.IsSpecial()) _punchB.Punch(_pb.GetExtraForce(), _pb.GetExtraDamage());
+            else _punchB.Punch();
         }
     }
 
     private void Update()
     {
         animator.SetBool("Punching", _input.attacking);
+        animator.SetBool("IsAxe", _pb.IsSpecial());
     }
 
     private void FixedUpdate()

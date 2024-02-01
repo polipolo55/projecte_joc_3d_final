@@ -16,10 +16,12 @@ public class PickupBehaviour : MonoBehaviour
     [Header("Params")]
     public float PushForce = 5f;
     public float pickupRange = 5f;
+    [Header("Axe")]
+    public float extraDamageAxe = 5f;
+    public float extraForceAxe = 10f;
 
     private bool _isPickup = false; //Retorna si es pot agafar un objecte
     private bool _pickedUp = false; //Retorna si s'ha agafat un objecte
-    [SerializeField]
     private ObjectGrabbable objectGrabbable = null;
 
     private void Update()
@@ -83,5 +85,7 @@ public class PickupBehaviour : MonoBehaviour
         if (objectGrabbable == null) return false;
         return objectGrabbable.special;
     }
+    public float GetExtraForce() { return extraForceAxe; }
+    public float GetExtraDamage() { return extraDamageAxe; }
     public bool HoldingObject() { return _pickedUp; }
 }
