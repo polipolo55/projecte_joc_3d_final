@@ -65,6 +65,7 @@ public class BeakableBehaviour : MonoBehaviour
     public void SubtractHealth(float amount)
     {
         Health -= amount;
+        if(Health <= 0) Break();
     }
 
     private void Break()

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player;
     public PoolingManager PoolingManager;
+    public float score;
 
     private void Awake()
     {

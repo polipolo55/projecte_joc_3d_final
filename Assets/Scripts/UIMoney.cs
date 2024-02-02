@@ -39,6 +39,7 @@ public class UIMoney : MonoBehaviour
     public void SetTargetMoney(int amount)
     {
         _targetMoney = amount;
+        GameManager.instance.score = _targetMoney;
         if (!_coroutineActive) StartCoroutine(UpdateMoney());
     }
 
