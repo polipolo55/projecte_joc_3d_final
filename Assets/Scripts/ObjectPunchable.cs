@@ -14,7 +14,7 @@ public class ObjectPunchable : MonoBehaviour
     public void Punch(Transform pushDirection, float pushForce)
     {
         Vector3 pushVector = pushDirection.transform.forward;
-        var AdjForce = pushForce * (_rb.mass / 2f);
+        var AdjForce = pushForce + (_rb.mass / 4f);
         _rb.AddForce(pushVector * AdjForce, ForceMode.Impulse);
     }
 }

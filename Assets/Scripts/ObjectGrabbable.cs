@@ -34,12 +34,20 @@ public class ObjectGrabbable : MonoBehaviour
 
     public void GrabSpecial(Transform destination)
     {
-        transform.localPosition = new Vector3(0.2f, -0.25f, -0.1f);
-        transform.rotation = Quaternion.Euler(-170, -306, 90);
+
+        if (_rb != null)
+        {
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+        }
         transform.SetParent(destination, false);
         _rb.useGravity = false;
         _rb.drag = 5f;
         _collider.enabled = false;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.localPosition = Vector3.zero;
+        transform.localPosition = new Vector3(0.13f, -0.1f, -0.2f);
+        transform.localRotation = Quaternion.Euler(-47, -122, -104);
     }
 
     public void Push(Transform pushDirection, float pushForce)

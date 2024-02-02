@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public AudioSource cutsceneAudio;
     public AudioClip ringSound;
     public AudioClip DialogSound;
+    public AudioClip Music1;
     public TMP_Text cutsceneText;
 
     public float typingSpeed = 20f;
@@ -19,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
         Invoke("StartTyping", 4f);
 
-        Invoke("LoadGameScene", 12f);    
+        Invoke("LoadGameScene", 14.5f);    
     }
 
     void PlayRingSound()
@@ -43,11 +44,13 @@ public class MainMenu : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         cutsceneText.text = "";
+        cutsceneAudio.PlayOneShot(Music1);
         foreach (char letter in text2.ToCharArray())
         {
             cutsceneText.text += letter;
             yield return new WaitForSeconds(1f / typingSpeed);
         }
+
     }
 
     void LoadGameScene()

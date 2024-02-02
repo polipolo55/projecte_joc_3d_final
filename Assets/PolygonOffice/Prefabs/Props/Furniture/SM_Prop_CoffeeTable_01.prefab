@@ -151,8 +151,8 @@ MonoBehaviour:
   isGreabable: 1
   isPunchable: 1
   Broken: 0
-  Strength: 100
-  Health: 300
+  Strength: 40
+  Health: 100
   Mass: 15
   isKinematic: 0
   Value: 200
