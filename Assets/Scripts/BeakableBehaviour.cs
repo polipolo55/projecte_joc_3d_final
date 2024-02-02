@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BeakableBehaviour : MonoBehaviour
 {
+    public bool isGreabable = false;
+    public bool isPunchable = false;
+    [Space]
     [Header("Object Properties")]
     public bool Broken = false;
     public float Strength = 1f;
@@ -40,6 +44,9 @@ public class BeakableBehaviour : MonoBehaviour
     private AudioSource _audioSource;
     public static event Action<BeakableBehaviour> OnObjectBroken = delegate { };
 
+
+
+
     private void Awake()
     {
         _coll = GetComponent<Collider>();
@@ -49,6 +56,29 @@ public class BeakableBehaviour : MonoBehaviour
         _audioSource.dopplerLevel = 4f;
         _rb.mass = Mass;      
         _rb.isKinematic = isKinematic;
+        SetupActions();
+        if (Broken) Break();
+    }
+
+
+    void SetupActions()
+    {
+        if (GetComponent<ObjectPunchable>() != null) isPunchable = true;
+        else
+        {
+            if (isPunchable)
+            {
+                gameObject.AddComponent<ObjectPunchable>();
+            }
+        }
+        if (_grab != null) isGreabable = true;
+        else
+        {
+            if (isGreabable)
+            {
+                _grab = gameObject.AddComponent<ObjectGrabbable>();
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -77,10 +107,11 @@ public class BeakableBehaviour : MonoBehaviour
             Destroy(_grab);
         }
         Broken = true;
-        _audioSource.PlayOneShot(BreakSound);
+        if (BreakSound != null) _audioSource.PlayOneShot(BreakSound);
         OnObjectBroken.Invoke(this);
         if (BrokenVersion != null)
         {
+            _coll.enabled = false;
             GameObject brokenObject = Instantiate(BrokenVersion, transform.position, transform.rotation);
 
             Rigidbody[] brokenRbs = brokenObject.GetComponentsInChildren<Rigidbody>();
@@ -93,6 +124,7 @@ public class BeakableBehaviour : MonoBehaviour
                 rb.angularVelocity = _rb.angularVelocity;
                 rb.mass = Mass / nRigid;
                 GameManager.instance.PoolingManager.AddPiece(rb.gameObject);
+
             }
 
             Destroy(gameObject);

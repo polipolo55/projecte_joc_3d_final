@@ -279,7 +279,8 @@ MonoBehaviour:
   WillDissapear: 0
   ParticleSystem: {fileID: 0}
   DissapearTime: 0.5
-  BrokenVersion: {fileID: 0}
+  BrokenVersion: {fileID: 5349956172681200209, guid: d773f993aa1297f42955791bb6e31b30,
+    type: 3}
   BreakSound: {fileID: 0}
 --- !u!82 &8403695581067595258
 AudioSource:

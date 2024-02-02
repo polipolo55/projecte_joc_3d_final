@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoolingManager : MonoBehaviour
 {
     public int poolSize = 10;
+    public int currentPoolSize = 0;
     private List<GameObject> _pool = new List<GameObject>();
 
     private void Awake()
@@ -14,6 +15,7 @@ public class PoolingManager : MonoBehaviour
 
     public void AddPiece(GameObject piece)
     {
+        currentPoolSize = _pool.Count;
         _pool.Add(piece);
 
         if (_pool.Count > poolSize)

@@ -22,6 +22,7 @@ public class ObjectGrabbable : MonoBehaviour
         _rb.useGravity = false;
         _rb.drag = 5f;
     }
+
     public void Drop()
     {
         _destination = null;

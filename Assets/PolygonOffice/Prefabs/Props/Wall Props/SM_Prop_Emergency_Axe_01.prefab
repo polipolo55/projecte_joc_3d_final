@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068eedbde93a8a949b32d6611da0383b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreabable: 0
+  isPunchable: 1
   Broken: 0
   Strength: 200
   Health: 40
@@ -131,7 +133,7 @@ MonoBehaviour:
   WillDissapear: 0
   ParticleSystem: {fileID: 0}
   DissapearTime: 0.5
-  BrokenVersion: {fileID: 1305248039836991338, guid: 532271fdd47815f419837660de58698a,
+  BrokenVersion: {fileID: 6588542222764541994, guid: 82b5350c6c259c74dbce02e100b8dc84,
     type: 3}
   BreakSound: {fileID: 0}
 --- !u!54 &5426247717702589150
