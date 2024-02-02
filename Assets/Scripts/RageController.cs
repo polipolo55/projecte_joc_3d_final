@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using TMPro;
-using static UnityEngine.InputSystem.InputSettings;
+
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
