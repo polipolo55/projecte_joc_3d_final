@@ -3,10 +3,13 @@ using UnityEngine;
 
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class RageController : MonoBehaviour
 {
     public RawImage gaugeArrow;
+
+    public Volume globalVolume;
 
     public float rageValue = 100f;
     public float decreaseRate = 5f;
@@ -46,6 +49,7 @@ public class RageController : MonoBehaviour
         if(_ended) SceneManager.LoadScene("Endscreen");
         float decreaseAmount = decreaseRate * Time.deltaTime;
         rageValue -= decreaseAmount;
+        globalVolume.weight = rageValue / 100f;
         if(rageValue <= 0) _ended = true;
         gaugeArrow.transform.rotation = Quaternion.Euler(0f, 0f, GaugeAngle());
     }

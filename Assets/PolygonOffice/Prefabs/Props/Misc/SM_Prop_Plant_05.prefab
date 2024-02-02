@@ -257,6 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068eedbde93a8a949b32d6611da0383b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreabable: 1
+  isPunchable: 1
   Broken: 0
   Strength: 30
   Health: 60
